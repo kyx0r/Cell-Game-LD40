@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: ab388d1e0a9db0d47902b8467e0d4885
+timeCreated: 1512249879
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Quantify
+  fontNames:
+  - Quantify
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
