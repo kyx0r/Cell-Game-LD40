@@ -4,7 +4,7 @@
 public class PlayerMov : MonoBehaviour
 {
     private Rigidbody2D _rb2d;
-    private float _speed = 10f;
+    private float _speed = 15f;
 
     private void Awake()
     {
