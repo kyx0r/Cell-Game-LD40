@@ -15,9 +15,7 @@ public class BloodCell : MonoBehaviour
     private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
-        _speed = GenerateSpeed();
-        _direction = GenerateDirection();
-        _travelVec = new Vector2(_direction.x * _speed, _direction.y * _speed);
+        GenerateTravelVector();
     }
 
     private Vector2 GenerateDirection()
@@ -39,6 +37,13 @@ public class BloodCell : MonoBehaviour
         return spd;
     }
 
+    private void GenerateTravelVector()
+    {
+        _speed = GenerateSpeed();
+        _direction = GenerateDirection();
+        _travelVec = new Vector2(_direction.x * _speed, _direction.y * _speed);
+    }
+
     private void TravelInDirection()
     {
         _rb2d.velocity = _travelVec;
@@ -49,12 +54,25 @@ public class BloodCell : MonoBehaviour
         TravelInDirection();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Boundary"))
         {
-            Debug.Log("Blood Cell Exited game world");
-            Destroy(gameObject);
+            if (collision.gameObject.CompareTag("Boundary"))
+            {
+                //Regenerate travel vector
+                GenerateTravelVector();
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boundary"))
+        {
+            //Keep regenrating travel vector until
+            //cell is not stuck
+            GenerateTravelVector();
         }
     }
 }

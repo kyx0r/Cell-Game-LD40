@@ -13,9 +13,7 @@ public class InvaderCell : MonoBehaviour
     private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
-        _speed = GenerateSpeed();
-        _direction = GenerateDirection();
-        _travelVec = new Vector2(_direction.x * _speed, _direction.y * _speed);
+        GenerateTravelVector();
     }
 
     private Vector2 GenerateDirection()
@@ -42,23 +40,41 @@ public class InvaderCell : MonoBehaviour
         _rb2d.velocity = _travelVec;
     }
 
+    private void GenerateTravelVector()
+    {
+        _speed = GenerateSpeed();
+        _direction = GenerateDirection();
+
+        _travelVec = new Vector2(_direction.x * _speed, _direction.y * _speed);
+    }
+
     private void Update()
     {
         TravelInDirection();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Boundary"))
         {
-            //Change the velocity
-            Debug.Log("Detected");
+            //Regenerate travel vector
+            GenerateTravelVector();
         }
 
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player destroyed invader cell!");
+
             Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boundary"))
+        {
+            //Regenerate travel vector
+            GenerateTravelVector();
         }
     }
 }

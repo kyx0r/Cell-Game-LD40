@@ -3,8 +3,8 @@
 
 public class CameraZoom : MonoBehaviour
 {
-    private float _minCameraZoom = 8f;
-    private float _maxCameraZoom = 15f;
+    private float _minCameraZoom = 21f;
+    private float _maxCameraZoom = 32f;
 
 
     private void Awake()
