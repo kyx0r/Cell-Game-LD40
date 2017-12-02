@@ -3,19 +3,19 @@
 
 public class BloodCell : MonoBehaviour
 {
-    private Vector2 direction;
+    private Vector2 _direction;
     private Rigidbody2D _rb2d;
-    private float speed;
-    private Vector2 travelVec;
+    private float _speed;
+    private Vector2 _travelVec;
 
 
 
     private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
-        speed = GenerateSpeed();
-        direction = GenerateDirection();
-        travelVec = new Vector2(direction.x * speed, direction.y * speed);
+        _speed = GenerateSpeed();
+        _direction = GenerateDirection();
+        _travelVec = new Vector2(_direction.x * _speed, _direction.y * _speed);
     }
 
     private Vector2 GenerateDirection()
@@ -37,7 +37,7 @@ public class BloodCell : MonoBehaviour
 
     private void TravelInDirection()
     {
-        _rb2d.velocity = travelVec;
+        _rb2d.velocity = _travelVec;
     }
 
     private void Update()
