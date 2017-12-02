@@ -5,22 +5,26 @@ public class BloodCell : MonoBehaviour
 {
     private Vector2 direction;
     private Rigidbody2D _rb2d;
+    private float speed;
+    private Vector2 travelVec;
 
-    [Range(3f, 11f)]
-    public float speed = 6f;
 
 
     private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
+        speed = GenerateSpeed();
+        direction = GenerateDirection();
+        travelVec = new Vector2(direction.x * speed, direction.y * speed);
     }
 
-    private float GenerateDirection()
+    private Vector2 GenerateDirection()
     {
-        //Generate Z rotation, degrees
-        float z = Random.Range(0f, 360f);
+        //Generate X
+        float x = Random.Range(-1f, 1f);
+        float y = Random.Range(-1f, 1f);
 
-        return z;
+        return new Vector2(x, y);
     }
 
     private float GenerateSpeed()
@@ -33,9 +37,20 @@ public class BloodCell : MonoBehaviour
 
     private void TravelInDirection()
     {
-        float randDirection = GenerateDirection();
-        float randSpeed = GenerateSpeed();
-        
-        
+        _rb2d.velocity = travelVec;
+    }
+
+    private void Update()
+    {
+        TravelInDirection();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boundary"))
+        {
+            Debug.Log("Blood Cell Exited game world");
+            Destroy(gameObject);
+        }
     }
 }
