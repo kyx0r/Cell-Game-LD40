@@ -75,8 +75,6 @@ public class InvaderCell : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player destroyed invader cell!");
-
             Destroy(gameObject);
         }
     }

@@ -36,7 +36,6 @@ public class BloodCellSpawner : MonoBehaviour
 
             SpawnBloodCell();
             _spawnCount++;
-            Debug.Log("Count of cells: " + _spawnCount);
             _countTimer = _spawnInterval;
         }
 
