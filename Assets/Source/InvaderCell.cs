@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 
 
-public class BloodCell : MonoBehaviour
+public class InvaderCell : MonoBehaviour
 {
-    private Vector2 _direction;
     private Rigidbody2D _rb2d;
     private float _speed;
+    private Vector2 _direction;
     private Vector2 _travelVec;
-    private float _minSpeed = 3f;
-    private float _maxSpeed = 11f;
-
-
+    private float _minSpeed = 8f;
+    private float _maxSpeed = 18f;
 
     private void Awake()
     {
@@ -53,7 +51,13 @@ public class BloodCell : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Boundary"))
         {
-            Debug.Log("Blood Cell Exited game world");
+            //Change the velocity
+            Debug.Log("Detected");
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player destroyed invader cell!");
             Destroy(gameObject);
         }
     }
