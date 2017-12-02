@@ -6,6 +6,9 @@ public class CameraZoom : MonoBehaviour
     private float _minCameraZoom = 21f;
     private float _maxCameraZoom = 32f;
 
+    //Min camera zoom with the scrollwheel
+    private float _minCamera = 5f;
+
 
     private void Awake()
     {
@@ -21,7 +24,19 @@ public class CameraZoom : MonoBehaviour
             else
                 Camera.main.orthographicSize = _minCameraZoom;
         }
-           
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            Camera.main.orthographicSize++;
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            Camera.main.orthographicSize--;
+
+        Camera.main.orthographicSize = Mathf.Clamp
+            (
+                Camera.main.orthographicSize,
+                _minCamera,
+                _maxCameraZoom
+            );
     }
 
     private void Update()

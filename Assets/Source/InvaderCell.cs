@@ -10,11 +10,14 @@ public class InvaderCell : MonoBehaviour
     private float _minSpeed = 10f;
     private float _maxSpeed = 20f;
     private InvaderCellSpawner _spawner;
+    private GameTracker _tracker;
+
 
     private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _spawner = FindObjectOfType<InvaderCellSpawner>();
+        _tracker = FindObjectOfType<GameTracker>();
         GenerateTravelVector();
     }
 
@@ -91,5 +94,6 @@ public class InvaderCell : MonoBehaviour
     private void OnDestroy()
     {
         _spawner.SpawnCount--;
+        _tracker.InvaderCellsKilled++;
     }
 }
