@@ -9,10 +9,12 @@ public class InvaderCell : MonoBehaviour
     private Vector2 _travelVec;
     private float _minSpeed = 8f;
     private float _maxSpeed = 18f;
+    private InvaderCellSpawner _spawner;
 
     private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
+        _spawner = FindObjectOfType<InvaderCellSpawner>();
         GenerateTravelVector();
     }
 
@@ -61,6 +63,11 @@ public class InvaderCell : MonoBehaviour
             GenerateTravelVector();
         }
 
+        if (collision.gameObject.CompareTag("BloodCell"))
+        {
+            Destroy(collision.gameObject);
+        }
+
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player destroyed invader cell!");
@@ -76,5 +83,10 @@ public class InvaderCell : MonoBehaviour
             //Regenerate travel vector
             GenerateTravelVector();
         }
+    }
+
+    private void OnDestroy()
+    {
+        _spawner.SpawnCount--;
     }
 }

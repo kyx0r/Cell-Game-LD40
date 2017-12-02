@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114294558347750674}
   m_Layer: 0
   m_Name: Invader_Cell
-  m_TagString: Untagged
+  m_TagString: InvaderCell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -14,12 +14,29 @@ public class BloodCellSpawner : MonoBehaviour
     //Countdown to next spawn
     private float _countTimer = 2f;
 
+    //max amount of cells in the game at a time
+    private int _maxSpawnCount = 10;
+
+    //current amount of cells in the game
+    private int _spawnCount;
+
+    public int SpawnCount
+    {
+        get { return _spawnCount; }
+        set { _spawnCount = value; }
+    }
+
 
     private void Update()
     {
         if (_countTimer <= 0f)
         {
+            if (_spawnCount >= _maxSpawnCount)
+                return;
+
             SpawnBloodCell();
+            _spawnCount++;
+            Debug.Log("Count of cells: " + _spawnCount);
             _countTimer = _spawnInterval;
         }
 

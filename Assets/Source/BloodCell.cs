@@ -9,12 +9,14 @@ public class BloodCell : MonoBehaviour
     private Vector2 _travelVec;
     private float _minSpeed = 3f;
     private float _maxSpeed = 11f;
+    private BloodCellSpawner _spawner;
 
 
 
     private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
+        _spawner = FindObjectOfType<BloodCellSpawner>();
         GenerateTravelVector();
     }
 
@@ -74,5 +76,10 @@ public class BloodCell : MonoBehaviour
             //cell is not stuck
             GenerateTravelVector();
         }
+    }
+
+    private void OnDestroy()
+    {
+        _spawner.SpawnCount--;
     }
 }
