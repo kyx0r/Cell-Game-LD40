@@ -7,8 +7,8 @@ public class InvaderCell : MonoBehaviour
     private float _speed;
     private Vector2 _direction;
     private Vector2 _travelVec;
-    private float _minSpeed = 8f;
-    private float _maxSpeed = 18f;
+    private float _minSpeed = 10f;
+    private float _maxSpeed = 20f;
     private InvaderCellSpawner _spawner;
 
     private void Awake()
@@ -66,6 +66,11 @@ public class InvaderCell : MonoBehaviour
         if (collision.gameObject.CompareTag("BloodCell"))
         {
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("InvaderCell"))
+        {
+            GenerateTravelVector();
         }
 
         if (collision.gameObject.CompareTag("Player"))

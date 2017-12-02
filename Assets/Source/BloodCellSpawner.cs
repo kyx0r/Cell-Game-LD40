@@ -15,7 +15,7 @@ public class BloodCellSpawner : MonoBehaviour
     private float _countTimer = 2f;
 
     //max amount of cells in the game at a time
-    private int _maxSpawnCount = 10;
+    private int _maxSpawnCount = 15;
 
     //current amount of cells in the game
     private int _spawnCount;

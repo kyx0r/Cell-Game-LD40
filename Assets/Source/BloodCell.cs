@@ -7,8 +7,8 @@ public class BloodCell : MonoBehaviour
     private Rigidbody2D _rb2d;
     private float _speed;
     private Vector2 _travelVec;
-    private float _minSpeed = 3f;
-    private float _maxSpeed = 11f;
+    private float _minSpeed = 10f;
+    private float _maxSpeed = 14f;
     private BloodCellSpawner _spawner;
 
 
@@ -74,6 +74,11 @@ public class BloodCell : MonoBehaviour
         {
             //Keep regenrating travel vector until
             //cell is not stuck
+            GenerateTravelVector();
+        }
+
+        if (collision.gameObject.CompareTag("BloodCell"))
+        {
             GenerateTravelVector();
         }
     }

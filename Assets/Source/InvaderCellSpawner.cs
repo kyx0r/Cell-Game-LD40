@@ -14,7 +14,7 @@ public class InvaderCellSpawner : MonoBehaviour
     private float _countTimer = 2f;
 
     //Max amount of cells in game at a time
-    private int _maxSpawnCount = 10;
+    private int _maxSpawnCount = 15;
 
     //current count of cells in game
     private int _spawnCount;
