@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 
 public class CameraZoom : MonoBehaviour
 {
     private float _minCameraZoom = 21f;
     private float _maxCameraZoom = 32f;
-
+    private float cameraDistance = 10f;
+    private float _minCamera = 5f;
 
     private void Awake()
     {
@@ -16,12 +17,25 @@ public class CameraZoom : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            Debug.Log(_minCameraZoom);
             if (Camera.main.orthographicSize == _minCameraZoom)
                 Camera.main.orthographicSize = _maxCameraZoom;
             else
                 Camera.main.orthographicSize = _minCameraZoom;
         }
-           
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0) // forward
+        {
+            
+            Camera.main.orthographicSize++;
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0) // back
+        {
+            Camera.main.orthographicSize--;
+        }
+        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, _minCamera, _maxCameraZoom);
+
     }
 
     private void Update()
@@ -30,3 +44,4 @@ public class CameraZoom : MonoBehaviour
     }
 
 }
+
