@@ -95,5 +95,6 @@ public class InvaderCell : MonoBehaviour
     {
         _spawner.SpawnCount--;
         _tracker.InvaderCellsKilled++;
+        _spawner.BloodCellsKilled++;
     }
 }
