@@ -10,6 +10,9 @@ public class GameTracker : MonoBehaviour
     private int _invaderCellsKilled;
     private DataHolder _holder;
 
+    public GameObject pauseMenu;
+    public GameObject gameUI;
+
 
     //Amount of blood cells to die in order
     //to end the game
@@ -43,5 +46,17 @@ public class GameTracker : MonoBehaviour
             _holder.InvaderCellsKilled = _invaderCellsKilled;
             _levelManager.LoadLevel("EndGame");
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            TogglePauseMenu();
+        }
+    }
+
+    private void TogglePauseMenu()
+    {
+        gameUI.SetActive(!gameUI.activeSelf);
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        Time.timeScale = (pauseMenu.activeSelf) ? 0 : 1;
     }
 }
