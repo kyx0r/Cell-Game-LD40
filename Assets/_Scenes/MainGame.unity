@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 413085995}
   - component: {fileID: 413085994}
   m_Layer: 5
-  m_Name: CellsKilledText
+  m_Name: BloodCellsKilledText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,6 +390,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 573469901}
+  - component: {fileID: 573469902}
   m_Layer: 0
   m_Name: UIUpdater
   m_TagString: Untagged
@@ -410,6 +411,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &573469902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573469900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0753016db6e1ce347b773e610c13a888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodCellsKilledText: {fileID: 413085994}
+  invaderCellsKilledText: {fileID: 1467989848}
+  tracker: {fileID: 1396025367}
 --- !u!1 &839665872
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,6 +801,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1396025366}
+  - component: {fileID: 1396025367}
   m_Layer: 0
   m_Name: GameTracker
   m_TagString: Untagged
@@ -806,6 +822,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1396025367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1396025365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bba3a80c1ff4a8468558dff86e09bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1467989846
 GameObject:
   m_ObjectHideFlags: 0

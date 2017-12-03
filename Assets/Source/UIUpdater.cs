@@ -6,16 +6,12 @@ public class UIUpdater : MonoBehaviour
 {
     public Text bloodCellsKilledText;
     public Text invaderCellsKilledText;
-    private GameTracker _tracker;
+    public GameTracker tracker;
 
-    private void Awake()
-    {
-        _tracker = GetComponent<GameTracker>();
-    }
 
     private void Update()
     {
-        bloodCellsKilledText.text = _tracker.BloodCellsKilled.ToString();
-        invaderCellsKilledText.text = _tracker.InvaderCellsKilled.ToString();
+        bloodCellsKilledText.text = tracker.BloodCellsKilled.ToString();
+        invaderCellsKilledText.text = tracker.InvaderCellsKilled.ToString();
     }
 }

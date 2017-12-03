@@ -5,12 +5,13 @@ public class GameTracker : MonoBehaviour
 {
     private BloodCellSpawner _bloodCellSpawner;
     private InvaderCellSpawner _invaderCellSpawner;
+    private LevelManager _levelManager;
     private int _bloodCellsKilled;
     private int _invaderCellsKilled;
 
     //Amount of blood cells to die in order
     //to end the game
-    private int _cellsDeadToEnd = 5;
+    private int _cellsDeadToEnd = 15;
 
 
     public int BloodCellsKilled
@@ -29,5 +30,12 @@ public class GameTracker : MonoBehaviour
     {
         _bloodCellsKilled = 0;
         _invaderCellsKilled = 0;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        if (_bloodCellsKilled >= _cellsDeadToEnd)
+            _levelManager.LoadLevel("EndGame");
     }
 }
