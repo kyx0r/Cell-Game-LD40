@@ -18,6 +18,14 @@ public class InvaderCellSpawner : MonoBehaviour
 
     //current count of cells in game
     private int _spawnCount;
+    
+    private int _bloodCellsKilled;
+
+    public int BloodCellsKilled
+    {
+        get { return _bloodCellsKilled; }
+        set { _bloodCellsKilled = value; }
+    }
 
     public int SpawnCount
     {
@@ -28,18 +36,9 @@ public class InvaderCellSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_countTimer <= 0f)
-        {
-            if (_spawnCount >= 10)
-                return;
-             
-
-            SpawnInvaderCell();
-            _spawnCount++;
-            _countTimer = _spawnInterval;
-        }
-
+        Spawn();
         _countTimer -= Time.deltaTime;
+        Conditional();
     }
 
     private void SpawnInvaderCell()
@@ -49,5 +48,35 @@ public class InvaderCellSpawner : MonoBehaviour
 
         Instantiate(invaderCellPrefab, new Vector2(x, y), Quaternion.identity);
     }
+    
+    private void Spawn()
+    {
+        if (_countTimer <= 0f)
+        {
+            if (_spawnCount >= 10)
+                return;
 
+
+            SpawnInvaderCell();
+            _spawnCount++;
+            _countTimer = _spawnInterval;
+        }
+    }
+    
+    private void Conditional()
+    {
+        if (_bloodCellsKilled == 3)
+        {
+            _spawnInterval = 4f;
+        }
+        else if (_bloodCellsKilled == 6)
+        {
+            _spawnInterval = 2f;
+        }
+        else if (_bloodCellsKilled == 12)
+        {
+            _spawnInterval = 1f;
+        }
+    }
 }
+
