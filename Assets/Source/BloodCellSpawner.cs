@@ -44,8 +44,10 @@ public class BloodCellSpawner : MonoBehaviour
 
     private void SpawnBloodCell()
     {
-        //Debug.Log("Spawn blood cell now");
-        Instantiate(bloodCellPrefab, transform.position, Quaternion.identity);
+        float x = Random.Range(-50, 50);
+        float y = Random.Range(-30, 20);
+
+        Instantiate(bloodCellPrefab, new Vector2(x, y), Quaternion.identity);
     }
 
 }

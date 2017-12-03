@@ -44,7 +44,10 @@ public class InvaderCellSpawner : MonoBehaviour
 
     private void SpawnInvaderCell()
     {
-        Instantiate(invaderCellPrefab, transform.position, Quaternion.identity);
+        float x = Random.Range(-50, 50);
+        float y = Random.Range(-20, 20);
+
+        Instantiate(invaderCellPrefab, new Vector2(x, y), Quaternion.identity);
     }
 
 }
