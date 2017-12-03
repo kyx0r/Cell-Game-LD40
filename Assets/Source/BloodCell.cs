@@ -7,8 +7,8 @@ public class BloodCell : MonoBehaviour
     private Rigidbody2D _rb2d;
     private float _speed;
     private Vector2 _travelVec;
-    private float _minSpeed = 10f;
-    private float _maxSpeed = 14f;
+    private float _minSpeed = 14f;
+    private float _maxSpeed = 21f;
     private BloodCellSpawner _spawner;
     private GameTracker _tracker;
 

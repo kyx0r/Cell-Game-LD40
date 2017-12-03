@@ -7,8 +7,8 @@ public class InvaderCell : MonoBehaviour
     private float _speed;
     private Vector2 _direction;
     private Vector2 _travelVec;
-    private float _minSpeed = 10f;
-    private float _maxSpeed = 20f;
+    private float _minSpeed = 18f;
+    private float _maxSpeed = 27f;
     private InvaderCellSpawner _spawner;
     private GameTracker _tracker;
 
