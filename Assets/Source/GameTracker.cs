@@ -8,6 +8,8 @@ public class GameTracker : MonoBehaviour
     private LevelManager _levelManager;
     private int _bloodCellsKilled;
     private int _invaderCellsKilled;
+    private DataHolder _holder;
+
 
     //Amount of blood cells to die in order
     //to end the game
@@ -30,12 +32,16 @@ public class GameTracker : MonoBehaviour
     {
         _bloodCellsKilled = 0;
         _invaderCellsKilled = 0;
-        DontDestroyOnLoad(gameObject);
+        _levelManager = FindObjectOfType<LevelManager>();
+        _holder = FindObjectOfType<DataHolder>();
     }
 
     private void Update()
     {
         if (_bloodCellsKilled >= _cellsDeadToEnd)
+        {
+            _holder.InvaderCellsKilled = _invaderCellsKilled;
             _levelManager.LoadLevel("EndGame");
+        }
     }
 }
